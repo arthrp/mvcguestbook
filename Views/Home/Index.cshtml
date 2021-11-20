@@ -1,0 +1,35 @@
+﻿@model GuestbookModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Welcome to guestbook</h2>
+
+<div id="posts-list">
+    @foreach (var post in Model.Posts)
+    {
+        <div class="post-title">Posted by @post.PosterName</div>
+        <div>
+            @post.Text
+        </div>
+    }
+</div>
+
+<div id="new-post-wrapper">
+    <h3>New post</h3>
+    
+    <form asp-action="AddPost" method="post">
+        <div class="col-auto">
+            <label class="col-form-label" for="postername">Name</label>
+            <input type="text" name="postername" id="postername" class="form-control"/>
+        </div>
+
+        <div class="col-auto">
+            <label for="post-text" class="col-form-label">Your post</label>
+            <textarea name="text" id="post-text" class="form-control"></textarea>
+        </div>
+        
+        <br />
+        <input type="submit" value="Post" />
+    </form>
+</div>
